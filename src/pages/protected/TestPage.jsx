@@ -1,5 +1,4 @@
-import { useNavigate } from "react-router-dom";
-import testFormStore from "../../store/testFormStore";
+import { useNavigate} from "react-router-dom";
 import testStore from "../../store/testStore";
 import TestForm from "../../components/test/TestForm";
 import styled from "styled-components";
@@ -7,9 +6,8 @@ import { calculateMBTI, mbtiDescriptions } from "../../utils/mbtiCalculator";
 
 
 const TestPage = () => {
-  const nav = useNavigate();
-  const { setResult, result } = testFormStore(); // zustand에서 결과 상태 관리
-  const { addTestResult } = testStore(); // zustand의 testStore로 결과 저장
+  const nav = useNavigate(); 
+  const { testResults, setTestResults, addTestResult } = testStore(); // zustand에서 결과 상태 관리
 
   const handleTestSubmit = async (answers) => {
     try {
@@ -17,7 +15,7 @@ const TestPage = () => {
       const mbtiResult = calculateMBTI(answers);
 
       // zustand 상태 업데이트
-      setResult(mbtiResult);
+      setTestResults([...testResults, { result: mbtiResult }]);
 
       // 서버 저장 및 상태 추가
       await addTestResult({ result: mbtiResult });
@@ -29,23 +27,24 @@ const TestPage = () => {
     }
   };
 
+  const currentResult = testResults[testResults.length - 1]?.result || null;
+
   return (
     <PageContainer>
       <ContentWrapper>
-        {!result ? (
+        {!currentResult ? (
           <>
             <Title>MBTI 테스트</Title>
             <TestForm onSubmit={handleTestSubmit} />
           </>
         ) : (
           <>
-            <Title>테스트 결과: {result}</Title>
+            <Title>테스트 결과: {currentResult}</Title>
             <Description>
-              {mbtiDescriptions[result] ||
+              {mbtiDescriptions[currentResult] ||
                 "해당 성격 유형에 대한 설명이 없습니다."}
             </Description>
-            <Button onClick={() => {if (!result) { alert("먼저 테스트를 완료해주세요."); return;
-              } nav("/results");}} >
+            <Button onClick={() => nav("/results")}>
               결과 페이지로 이동하기
             </Button>
           </>

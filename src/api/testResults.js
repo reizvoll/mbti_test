@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = 'http://localhost:5000/testResults';
+const API_URL = 'http://localhost:4000/testResults';
 
 // 테스트 결과 가져오기
 export const getTestResults = async () => {

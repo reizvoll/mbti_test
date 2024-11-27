@@ -10,9 +10,13 @@ const TestForm = ({ onSubmit }) => {
     setAnswer(index, { type: questions[index].type, answer: value });
   };
 
+  //질문 답변 체킹
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Answers:", answers);
+    if (answers.some((answer) => !answer.answer)) {
+      alert("모든 질문에 답변해주세요!");
+      return;
+    }
     onSubmit(answers);
   };
 
@@ -40,7 +44,7 @@ const TestForm = ({ onSubmit }) => {
           </div>
         </QuestionWrapper>
       ))}
-      <SubmitButton type="submit">제출하기</SubmitButton>
+      <SubmitButton type="submit" >제출하기</SubmitButton>
     </Form>
   );
 };
