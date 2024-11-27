@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { getTestResults } from "../../api/testResults";
-import MainLayout from "../../components/MainLayout";
 import TestResultList from '../../components/test/TestResultList';
 
 const TestResult = () => {
@@ -26,7 +25,6 @@ const TestResult = () => {
 
   return (
     <>
-      <MainLayout />
       <Container>
         <Title>모든 테스트 결과</Title>
         {loading ? (
