@@ -20,11 +20,7 @@ const BtnStyle = styled.button`
 `;
 
 const Btn = ({ onClick, children }) => {
-    return (
-      <BtnStyle onClick={onClick}>
-        {children}
-      </BtnStyle>
-    );
-  };
+  return <BtnStyle onClick={onClick}>{children}</BtnStyle>;
+};
 
-export default Btn
+export default Btn;

@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import testStore from "../../store/testStore";
+import styled from 'styled-components';
+import testStore from '../../store/testStore';
 import TestResultItem from './TestResultItem';
 
 const TestResultList = () => {
@@ -8,7 +8,7 @@ const TestResultList = () => {
   return (
     <Container>
       {testResults
-        .filter((result) => result.visibility) // 공개된 결과만 표시
+        .filter((result) => result.visibility)
         .map((result) => (
           <TestResultItem
             key={result.id}
@@ -24,9 +24,9 @@ const TestResultList = () => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 24px; /* 간격 설정 */
+  gap: 24px;
   width: 100%;
-  max-width: 768px; /* max-w-3xl */
+  max-width: 768px;
 `;
 
 export default TestResultList;

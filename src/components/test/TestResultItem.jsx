@@ -1,105 +1,61 @@
-import styled from "styled-components";
-import testStore from "../../store/testStore";
+import { useEffect, useState } from 'react';
+import styled from 'styled-components';
+import { getTestResults } from '../../api/testResults';
+import TestResultList from '../../components/test/TestResultList';
 
-const TestResultItem = ({ result }) => {
-    const { id, userid, username, mbti, description, createdAt, visibility } = result;
-    const { toggleVisibility, deleteTestResult } = testStore();
+const TestResult = () => {
+  const [testResults, setTestResults] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-    return (
-        <Card>
-            <Header>
-                <Title>{username}</Title>
-                <Timestamp>{new Date(createdAt).toLocaleString()}</Timestamp>
-            </Header>
-            <MBTI>{mbti}</MBTI>
-            <Description>{description}</Description>
-            {userid && (
-                <ButtonContainer>
-                    <ToggleButton
-                        onClick={() => toggleVisibility(id, visibility)}
-                    >
-                        {visibility ? "비공개" : "공개"}
-                    </ToggleButton>
-                    <DeleteButton onClick={() => deleteTestResult(id)}>삭제</DeleteButton>
-                </ButtonContainer>
-            )}
-        </Card>
-    );
+  useEffect(() => {
+    const fetchTestResults = async () => {
+      try {
+        setLoading(true);
+        const results = await getTestResults();
+        setTestResults(results);
+      } catch (error) {
+        console.error('테스트 결과를 가져오는 중 오류:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchTestResults();
+  }, []);
+
+  return (
+    <Container>
+      <Title>모든 테스트 결과</Title>
+      {loading ? (
+        <LoadingMessage>로딩 중...</LoadingMessage>
+      ) : (
+        <TestResultList testResults={testResults} setTestResults={setTestResults} />
+      )}
+    </Container>
+  );
 };
 
-const Card = styled.div`
-  background-color: #1e293b;
-  color: white;
-  padding: 16px;
-  border-radius: 8px;
-  margin-bottom: 16px;
-`;
-
-const Header = styled.div`
+const Container = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  margin-bottom: 8px;
+  justify-content: center;
+  width: 100%;
+  background-color: white;
+  margin-top: 40px;
+  padding: 20px;
 `;
 
-const Title = styled.h2`
-  font-size: 1.25rem;
+const Title = styled.h1`
+  font-size: 24px;
   font-weight: bold;
+  margin-bottom: 20px;
+  color: #6c63ff;
 `;
 
-const Timestamp = styled.p`
-  font-size: 0.875rem;
-  color: #94a3b8;
+const LoadingMessage = styled.p`
+  font-size: 18px;
+  color: #6b7280;
 `;
 
-const MBTI = styled.h3`
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #fbbf24;
-  margin: 8px 0;
-`;
-
-const Description = styled.p`
-  font-size: 1rem;
-  color: #e2e8f0;
-  margin-bottom: 16px;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  gap: 8px;
-`;
-
-const ToggleButton = styled.button`
-  background-color: ${(props) => (props.visibility ? "#3b82f6" : "#10b981")};
-  color: white;
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  border: none;
-  font-weight: bold;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: ${(props) =>
-        props.visibility ? "#2563eb" : "#059669"};
-  }
-`;
-
-const DeleteButton = styled.button`
-  background-color: #ef4444;
-  color: white;
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  border: none;
-  font-weight: bold;
-  transition: background-color 0.3s;
-
-  &:hover {
-    background-color: #dc2626;
-  }
-`;
-
-export default TestResultItem;
+export default TestResult;

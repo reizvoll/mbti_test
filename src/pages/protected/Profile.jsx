@@ -1,22 +1,22 @@
+import { useState } from "react";
 import authStore from "../../store/authStore";
+import { toast } from "react-toastify";
 
 const Profile = () => {
-  const user = authStore((state) => state.user);
+  const [nickname, setNickname] = useState("");
   const updateProfile = authStore((state) => state.updateProfile);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const updatedNickname = e.target.nickname.value.trim();
-      if (!updatedNickname) {
-        alert("닉네임을 입력해주세요.");
+      if (!nickname.trim()) {
+        toast.error("닉네임을 입력해주세요.");
         return;
       }
-      await updateProfile({ nickname: updatedNickname });
-      alert("프로필이 성공적으로 업데이트되었습니다!");
+      await updateProfile({ nickname });
+      toast.success("프로필이 성공적으로 업데이트되었습니다!");
     } catch (err) {
       console.error("프로필 업데이트 중 오류:", err);
-      alert("프로필 업데이트 중 문제가 발생했습니다. 다시 시도해주세요.");
     }
   };
 
@@ -30,7 +30,8 @@ const Profile = () => {
             id="nickname"
             name="nickname"
             type="text"
-            defaultValue={user?.nickname || ""}
+            value={nickname}
+            onChange={(e) => setNickname(e.target.value)}
           />
         </div>
         <button type="submit">프로필 업데이트</button>

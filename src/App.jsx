@@ -1,15 +1,17 @@
 import { createGlobalStyle } from 'styled-components';
 import reset from 'styled-reset';
 import Router from './shared/Router';
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-    return (
-        <>
-            <GlobalStyle />
-            <Router />
-        </>
-    )
+  return (
+    <>
+      <GlobalStyle />
+      <Router />
+      <ToastContainer position="top-center" autoClose={3000} />
+    </>
+  );
 }
 
 //폰트 추가 및 CSS reset
@@ -39,4 +41,4 @@ const GlobalStyle = createGlobalStyle`
   select,input,textarea{    font-family: 'Pretendard-Regular';}
 `;
 
-export default App
+export default App;

@@ -1,13 +1,13 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Login from '../pages/auth/Login';
-import SignUp from "../pages/auth/SignUp";
+import SignUp from '../pages/auth/SignUp';
 import ProtectedRoute from '../components/ProtectedRoute';
 import MainLayout from '../components/MainLayout';
-import Home from "../pages/protected/Home";
+import Home from '../pages/protected/Home';
 import Profile from '../pages/protected/Profile';
 import TestPage from '../pages/protected/TestPage';
-import Intro from "../pages/Intro";
-import TestResult from "../pages/protected/TestResult";
+import Intro from '../pages/Intro';
+import TestResult from '../pages/protected/TestResult';
 
 const Router = () => {
   return (
@@ -34,4 +34,4 @@ const Router = () => {
   );
 };
 
-export default Router
+export default Router;

@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { questions } from "../../data/questions";
-import testFormStore from "../../store/testFormStore";
-
+import styled from 'styled-components';
+import { questions } from '../../data/questions';
+import testFormStore from '../../store/testFormStore';
+import { toast } from 'react-toastify';
 
 const TestForm = ({ onSubmit }) => {
   const { answers, setAnswer } = testFormStore();
@@ -10,11 +10,10 @@ const TestForm = ({ onSubmit }) => {
     setAnswer(index, { type: questions[index].type, answer: value });
   };
 
-  //질문 답변 체킹
   const handleSubmit = (e) => {
     e.preventDefault();
     if (answers.some((answer) => !answer.answer)) {
-      alert("모든 질문에 답변해주세요!");
+      toast.error('모든 질문에 답변해주세요!');
       return;
     }
     onSubmit(answers);
@@ -29,14 +28,14 @@ const TestForm = ({ onSubmit }) => {
             {q.options.map((option, i) => (
               <OptionWrapper
                 key={i}
-                isSelected={answers[index]?.answer === q.type.split("/")[i]}
+                isSelected={answers[index]?.answer === q.type.split('/')[i]}
               >
                 <RadioInput
                   type="radio"
                   name={`question-${index}`}
-                  value={q.type.split("/")[i]}
-                  checked={answers[index]?.answer === q.type.split("/")[i]}
-                  onChange={() => handleChange(index, q.type.split("/")[i])}
+                  value={q.type.split('/')[i]}
+                  checked={answers[index]?.answer === q.type.split('/')[i]}
+                  onChange={() => handleChange(index, q.type.split('/')[i])}
                 />
                 {option}
               </OptionWrapper>
@@ -44,7 +43,7 @@ const TestForm = ({ onSubmit }) => {
           </div>
         </QuestionWrapper>
       ))}
-      <SubmitButton type="submit" >제출하기</SubmitButton>
+      <SubmitButton type="submit">제출하기</SubmitButton>
     </Form>
   );
 };
@@ -61,7 +60,7 @@ const QuestionWrapper = styled.div`
 
 const QuestionText = styled.p`
   font-weight: 600;
-  font-size: 1.125rem;
+  font-size: 18px;
   margin-bottom: 12px;
 `;
 
@@ -72,7 +71,7 @@ const OptionWrapper = styled.label`
   border-radius: 8px;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  background-color: ${(props) => (props.isSelected ? "#f3f4f6" : "white")};
+  background-color: ${(props) => (props.isSelected ? '#f3f4f6' : 'white')};
   &:hover {
     background-color: #f3f4f6;
   }

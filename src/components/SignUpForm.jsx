@@ -1,28 +1,25 @@
-import { useState } from "react";
-import styled from "styled-components";
+import { useState } from 'react';
+import styled from 'styled-components';
 
 const SignUpForm = ({ onSubmit }) => {
-  // 폼 상태 관리
   const [formData, setFormData] = useState({
-    id: "",
-    password: "",
-    nickname: "",
+    id: '',
+    password: '',
+    nickname: '',
   });
 
-  // 입력 변경 핸들러
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: value, // name 속성을 기반으로 상태 업데이트
+      [name]: value,
     }));
   };
 
-  // 폼 제출 핸들러
   const handleSubmit = (e) => {
-    e.preventDefault(); // 기본 동작 방지
+    e.preventDefault();
     if (onSubmit) {
-      onSubmit(formData); // 부모 컴포넌트에서 전달된 onSubmit 호출
+      onSubmit(formData);
     }
   };
 
@@ -30,36 +27,34 @@ const SignUpForm = ({ onSubmit }) => {
     <Container>
       <Title>회원가입</Title>
       <Subtitle>정보를 입력해주세요.</Subtitle>
-
       <Form onSubmit={handleSubmit}>
-      <Input
-        type="text"
-        name="id"
-        value={formData.id}
-        onChange={handleChange} // 입력 변경 핸들러 연결
-        placeholder="아이디"
-      />
-      <Input
-        type="password"
-        name="password"
-        value={formData.password}
-        onChange={handleChange} // 입력 변경 핸들러 연결
-        placeholder="비밀번호"
-      />
-      <Input
-        type="text"
-        name="nickname"
-        value={formData.nickname}
-        onChange={handleChange} // 입력 변경 핸들러 연결
-        placeholder="닉네임"
-      />
-      <SubmitButton type="submit">회원가입</SubmitButton>
-    </Form>
+        <Input
+          type="text"
+          name="id"
+          value={formData.id}
+          onChange={handleChange}
+          placeholder="아이디"
+        />
+        <Input
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}
+          placeholder="비밀번호"
+        />
+        <Input
+          type="text"
+          name="nickname"
+          value={formData.nickname}
+          onChange={handleChange}
+          placeholder="닉네임"
+        />
+        <SubmitButton type="submit">회원가입</SubmitButton>
+      </Form>
     </Container>
   );
 };
 
-// 스타일 정의
 const Container = styled.div`
   display: flex;
   flex-direction: column;

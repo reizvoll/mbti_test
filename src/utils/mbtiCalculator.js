@@ -52,7 +52,7 @@ export const mbtiDescriptions = {
   
     return result;
   };
-//   // 사용 예시:
+//   사용 예시:
 //   const answers = [
 //     { type: "E/I", answer: "E" },
 //     { type: "S/N", answer: "S" },
