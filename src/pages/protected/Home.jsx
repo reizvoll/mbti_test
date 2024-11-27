@@ -2,7 +2,7 @@ import authStore from "../../store/authStore";
 
 const Home = () => {
   const user = authStore((state) => state.user); // 로그인한 사용자 정보 가져오기
-  console.log('userData', user)
+
   return (
     <div>
       <h1>메인 페이지</h1>
