@@ -27,6 +27,10 @@
 src/
 │
 ├── components/             # 재사용 가능한 UI 컴포넌트
+│   ├── test/               # 테스트 페이지 관련 컴포넌트
+│   │   ├── TestForm.jsx            # 테스트 폼 컴포넌트
+│   │   └── TestResultItem.jsx      # 테스트 결과 컴포넌트
+│   │   └── TestResultList.jsx      # 테스트 결과 리스트 컴포넌트
 │   ├── Btn.jsx             # 버튼 컴포넌트
 │   ├── LoginForm.jsx       # 로그인 폼 컴포넌트
 │   ├── MainLayout.jsx      # 전체 레이아웃 컴포넌트
