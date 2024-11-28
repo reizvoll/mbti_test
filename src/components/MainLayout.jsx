@@ -17,18 +17,16 @@ const MainLayout = () => {
     <LayoutContainer>
       <NavBar>
         <NavButton onClick={() => nav('/')}>Home</NavButton>
-        {isAuthenticated && (
+        {isAuthenticated ? (
           <>
             <NavButton onClick={() => nav('/test')}>Test</NavButton>
-            <ProfileBtn onClick={() => nav('/profile')}>Profile</ProfileBtn>
-            <LogoutBtn onClick={handleLogout}>LogOut</LogoutBtn>
+            <NavButton onClick={() => nav('/profile')}>Profile</NavButton>
+            <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
           </>
-        )}
-        {!isAuthenticated && (
-          <NavButton onClick={() => nav('/login')}>로그인</NavButton>
+        ) : (
+          <NavButton onClick={() => nav('/login')}>Login</NavButton>
         )}
       </NavBar>
-      {/* 콘텐츠가 NavBar 아래로 내려가도록 조정 */}
       <Content>
         <Outlet />
       </Content>
@@ -36,72 +34,75 @@ const MainLayout = () => {
   );
 };
 
+// 전체 레이아웃 컨테이너
 const LayoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
+// 네비게이션 바
 const NavBar = styled.nav`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 80px;
-  padding: 17px;
+  gap: 20px;
+  padding: 12px;
   background-color: rgba(107, 99, 255, 0.5);
   width: 100%;
-  height: 65px;
+  height: 70px;
   position: fixed;
-  left: 0;
-  z-index: 10;
+  top: 0;
+
 
   @media (max-width: 768px) {
-    flex-direction: column; /* 작은 화면에서는 버튼을 수직 정렬 */
-    gap: 1px; /* 간격 축소 */
+    flex-direction: column;
+    gap: 5px;
+    height: auto;
   }
 `;
 
+// 콘텐츠 영역
 const Content = styled.div`
-  margin-top: 65px;
+  margin-top: 70px;
   width: 100%;
+  padding: 20px;
 
   @media (max-width: 768px) {
-    margin-top: 100px; /* 작은 화면에서 NavBar 높이를 고려 */
+    margin-top: 90px; /* 작은 화면에서 NavBar 높이를 고려 */
   }
 `;
 
+// 네비게이션 버튼 스타일
 const NavButton = styled.button`
   background-color: rgba(107, 99, 255, 0.3);
-  color: #222;
+  color: #ffffff;
   font-size: 16px;
-  padding: 8px 16px;
+  font-weight: bold;
+  padding: 10px 20px;
   border: none;
-  border-radius: 20px;
-  margin: 0 8px;
+  border-radius: 25px;
   cursor: pointer;
+  transition: all 0.3s ease;
 
   &:hover {
     background-color: #4b00cc;
+    color: #ffffff;
+  }
+
+  @media (max-width: 768px) {
+    width: 90%;
+    font-size: 14px;
   }
 `;
 
-const ProfileBtn = styled(NavButton)`
-  color: #222;
+// 로그아웃 버튼 스타일
+const LogoutButton = styled(NavButton)`
+  background-color: #ff5a5f;
 
   &:hover {
-    color: #000;
-  }
-`;
-
-const LogoutBtn = styled.button`
-  font-size: 16px;
-  padding: 8px 16px;
-  margin: 0 8px;
-  color: #ff5a5f;
-
-  &:hover {
-    color: #e63946;
+    background-color: #e63946;
   }
 `;
 

@@ -4,16 +4,19 @@ import TestForm from '../../components/test/TestForm';
 import styled from 'styled-components';
 import { calculateMBTI, mbtiDescriptions } from '../../utils/mbtiCalculator';
 import { toast } from 'react-toastify';
+import { useState } from 'react';
 
 const TestPage = () => {
   const nav = useNavigate();
   const { testResults, setTestResults, addTestResult } = testStore(); // zustand에서 결과 상태 관리
+  const [mbti, setMbti] = useState('');
 
   const handleTestSubmit = async (answers) => {
     try {
       // MBTI 결과 계산
       const mbtiResult = calculateMBTI(answers);
 
+      setMbti(mbtiResult);
       // zustand 상태 업데이트
       setTestResults([...testResults, { result: mbtiResult }]);
 
@@ -28,21 +31,19 @@ const TestPage = () => {
     }
   };
 
-  const currentResult = testResults[testResults.length - 1]?.result || null;
-
   return (
     <PageContainer>
       <ContentWrapper>
-        {!currentResult ? (
+        {!mbti ? (
           <>
             <Title>MBTI 테스트</Title>
             <TestForm onSubmit={handleTestSubmit} />
           </>
         ) : (
           <>
-            <Title>테스트 결과: {currentResult}</Title>
+            <Title>테스트 결과: {mbti}</Title>
             <Description>
-              {mbtiDescriptions[currentResult] ||
+              {mbtiDescriptions[mbti] ||
                 '해당 성격 유형에 대한 설명이 없습니다.'}
             </Description>
             <Button onClick={() => nav('/results')}>결과 페이지로 이동하기</Button>

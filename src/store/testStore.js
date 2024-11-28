@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { deleteTestResult, getTestResults, updateTestResult } from "../api/testResults";
+import { createTestResult, deleteTestResult, updateTestResult } from "../api/testResults";
 import { toast } from "react-toastify";
 
 const testStore = create((set) => ({
@@ -15,7 +15,7 @@ const testStore = create((set) => ({
         answers, // 사용자가 선택한 답변
         timestamp: new Date(),
       };
-      const createdResult = await getTestResults(newResult); // API 호출
+      const createdResult = await createTestResult(newResult); // API 호출
 
       set((state) => ({
         testResults: [...state.testResults, createdResult], // 새로운 결과 추가
