@@ -59,13 +59,15 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
 `;
 
 const Title = styled.h1`
   font-size: 24px;
   font-weight: bold;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 `;
 
 const Subtitle = styled.p`
@@ -78,24 +80,27 @@ const Form = styled.form`
   display: flex;
   flex-direction: column;
   width: 100%;
-  max-width: 300px;
 `;
 
 const Input = styled.input`
   font-size: 16px;
   padding: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  width: 100%;
 `;
 
 const SubmitButton = styled.button`
   font-size: 16px;
-  color: #fff;
+  color: white;
   background-color: #7a5dc7;
   padding: 12px;
   border: none;
-  border-radius: 8px;
+  width: 300px;
+  margin: 10px auto;
+  border-radius: 20px;
+
   cursor: pointer;
 
   &:hover {

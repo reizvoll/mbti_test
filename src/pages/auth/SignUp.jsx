@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import Btn from '../../components/Btn';
+import styled from 'styled-components';
 import SignUpForm from '../../components/SignUpForm';
 import authStore from '../../store/authStore';
 
@@ -10,16 +10,42 @@ const SignUp = () => {
   };
 
   return (
-    <div>
-      <h1>회원가입</h1>
+    <Container>
       <SignUpForm onSubmit={handleSignup} />
-      <div>
+      <SignUpEffects>
         <p>
-          이미 계정이 있으신가요? <Btn onClick={() => nav('/login')}>로그인</Btn>
+          이미 계정이 있으신가요?{' '}
+          <LoginBtn onClick={() => nav('/login')}>로그인</LoginBtn>
         </p>
-      </div>
-    </div>
+      </SignUpEffects>
+    </Container>
   );
 };
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #f9f9f9;
+  padding: 20px;
+`;
+
+const SignUpEffects = styled.div`
+  margin-top: 40px;
+`;
+
+const LoginBtn = styled.button`
+  margin-left: 8px;
+  color: #6c63ff;
+  font-weight: bold;
+  cursor: pointer;
+
+  &:hover {
+    color: #4b00cc;
+  }
+`;
 
 export default SignUp;

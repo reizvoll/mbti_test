@@ -1,6 +1,5 @@
 import authStore from '../../store/authStore';
 
-
 const Home = () => {
   const user = authStore((state) => state.user); // 로그인한 사용자 정보 가져오기
   const isAuthenticated = authStore((state) => state.isAuthenticated); // 인증 상태 확인

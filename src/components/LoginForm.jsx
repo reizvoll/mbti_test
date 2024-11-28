@@ -63,9 +63,10 @@ const Form = styled.form`
 const Input = styled.input`
   font-size: 16px;
   padding: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  width: 100%;
 `;
 
 const SubmitButton = styled.button`
@@ -74,7 +75,10 @@ const SubmitButton = styled.button`
   background-color: #7a5dc7;
   padding: 12px;
   border: none;
-  border-radius: 8px;
+  width: 300px;
+  margin: 10px auto;
+  border-radius: 20px;
+
   cursor: pointer;
 
   &:hover {
