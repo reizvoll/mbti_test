@@ -1,40 +1,32 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Login from "../pages/Auth/Login";
-import Signup from "../pages/auth/SignUp";
-import PasswordReset from "../pages/auth/PasswordReset";
-import ResetPage from "../pages/auth/ResetPage";
-import DeleteAccount from "../pages/Auth/DeleteAccount";
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Login from '../pages/auth/Login';
+import SignUp from '../pages/auth/SignUp';
 import ProtectedRoute from '../components/ProtectedRoute';
 import MainLayout from '../components/MainLayout';
-import Home from "../pages/protected/Home";
+import Home from '../pages/protected/Home';
 import Profile from '../pages/protected/Profile';
 import TestPage from '../pages/protected/TestPage';
-import TestResultPage from '../pages/protected/TestResultPage';
-import Intro from "../pages/Intro";
-
+import Intro from '../pages/Intro';
+import TestResult from '../pages/protected/TestResult';
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Routes>
-
-        {/* Intro Page */}
-        <Route path="/" element={<Intro />} />
-
         {/* Public Routes */}
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/password-reset" element={<PasswordReset />} />
-        <Route path="/reset-page" element={<ResetPage />} />
-        <Route path="/delete-account" element={<DeleteAccount />} />
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Intro />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/signup" element={<SignUp />} />
+        </Route>
 
         {/* Protected Routes */}
-        <Route path="/" element={<ProtectedRoute />}>
+        <Route element={<ProtectedRoute />}>
           <Route element={<MainLayout />}>
-            <Route index element={<Home />} />
+            <Route path="/home" element={<Home />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/test" element={<TestPage />} />
-            <Route path="/results" element={<TestResultPage />} />
+            <Route path="/results" element={<TestResult />} />
           </Route>
         </Route>
       </Routes>
@@ -42,4 +34,4 @@ const Router = () => {
   );
 };
 
-export default Router
+export default Router;

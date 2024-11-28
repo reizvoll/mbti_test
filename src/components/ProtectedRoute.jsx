@@ -1,7 +1,10 @@
-const ProtectedRoute = () => {
-  return (
-    <div>ProtectedRoute</div>
-  )
-}
+import { Navigate, Outlet } from 'react-router-dom';
+import authStore from '../store/authStore';
 
-export default ProtectedRoute
+const ProtectedRoute = () => {
+  const isAuthenticated = authStore((state) => state.isAuthenticated);
+
+  return isAuthenticated ? <Outlet /> : <Navigate to="/home" />;
+};
+
+export default ProtectedRoute;
