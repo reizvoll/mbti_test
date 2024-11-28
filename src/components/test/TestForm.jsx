@@ -43,7 +43,9 @@ const TestForm = ({ onSubmit }) => {
           </div>
         </QuestionWrapper>
       ))}
-      <SubmitButton type="submit">제출하기</SubmitButton>
+      <BtnWrapper>
+        <SubmitButton type="submit">제출하기</SubmitButton>
+      </BtnWrapper>
     </Form>
   );
 };
@@ -66,7 +68,8 @@ const QuestionText = styled.p`
 
 const OptionWrapper = styled.label`
   display: block;
-  padding: 12px;
+  padding: 15px;
+  margin-top: 10px;
   border: 1px solid #d1d5db;
   border-radius: 8px;
   cursor: pointer;
@@ -82,19 +85,26 @@ const RadioInput = styled.input`
   accent-color: #6c63ff;
 `;
 
+const BtnWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+`;
+
 const SubmitButton = styled.button`
   width: 100%;
   background-color: #6c63ff;
   color: white;
   padding: 12px;
-  border-radius: 8px;
+  border-radius: 20px;
+  text-align: center;
   font-weight: 600;
   transition: background-color 0.3s ease, color 0.3s ease;
 
   &:hover {
     background-color: #4b00cc;
-    color: #ff5a5f;
   }
 `;
+
 
 export default TestForm;

@@ -25,7 +25,6 @@ const SignUpForm = ({ onSubmit }) => {
 
   return (
     <Container>
-      <Title>회원가입</Title>
       <Subtitle>정보를 입력해주세요.</Subtitle>
       <Form onSubmit={handleSubmit}>
         <Input
@@ -62,12 +61,6 @@ const Container = styled.div`
   width: 100%;
   max-width: 400px;
   margin: 0 auto;
-`;
-
-const Title = styled.h1`
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 10px;
 `;
 
 const Subtitle = styled.p`

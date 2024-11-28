@@ -66,14 +66,15 @@ const ContentWrapper = styled.div`
   background-color: white;
   border-radius: 16px;
   padding: 32px;
-  max-width: 600px;
+  max-width: 768px;
   width: 100%;
   height: 100%;
   overflow-y: auto;
 `;
 
 const Title = styled.h1`
-  font-size: 24px;
+text-align: center;
+  font-size: 32px;
   font-weight: bold;
   color: #6c63ff;
   margin-bottom: 24px;
@@ -92,11 +93,12 @@ const Button = styled.button`
   padding: 12px;
   border-radius: 8px;
   font-weight: 600;
+  text-align: center;
   transition: background-color 0.3s ease, color 0.3s ease;
 
   &:hover {
     background-color: #4b00cc;
-    color: #ff5a5f;
+
   }
 `;
 
