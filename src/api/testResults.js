@@ -1,6 +1,6 @@
 import axiosInstance from "./axiosInstance";
 
-const LOCAL_URL = 'http://localhost:4000/testResults';
+const LOCAL_URL = 'https://chip-past-apparel.glitch.me/testResults';
 
 // 테스트 결과 가져오기
 export const getTestResults = async () => {
