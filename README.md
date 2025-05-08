@@ -94,32 +94,32 @@ src/
 ## ✅ 필수 구현 사항
 
 ### 1. Tailwind CSS 설치 및 설정
-- [[x]] **Tailwind CSS 설치** -> Styled-Components로 변경하여 사용
+- [x] **Tailwind CSS 설치** -> Styled-Components로 변경하여 사용
 
 ### 2. 라우터 설정 및 페이지 생성
-- [[x]] `react-router-dom` 설치 및 라우팅 설정
-- [[x]] **페이지 생성 및 라우트 연결**
-  - [[x]] `/` - Home Page
-  - [[x]] `/login` - 로그인 페이지
-  - [[x]] `/signup` - 회원가입 페이지
-  - [[x]] `/profile` - 프로필 페이지
-  - [[x]] `/test` - MBTI 테스트 페이지
-  - [[x]] `/results` - 테스트 결과 페이지
+- [x] `react-router-dom` 설치 및 라우팅 설정
+- [x] **페이지 생성 및 라우트 연결**
+  - [x] `/` - Home Page
+  - [x] `/login` - 로그인 페이지
+  - [x] `/signup` - 회원가입 페이지
+  - [x] `/profile` - 프로필 페이지
+  - [x] `/test` - MBTI 테스트 페이지
+  - [x] `/results` - 테스트 결과 페이지
 
 ### 3. JWT 인증 API 연결
-- [[x]] `src/api/auth.js` 생성
-  - [[x]] 회원가입 API (`POST /register`)
-  - [[x]] 로그인 API (`POST /login`)
-  - [[x]] 회원정보 확인 API (`GET /user`)
-  - [[x]] 프로필 수정 API (`PATCH /profile`)
+- [x] `src/api/auth.js` 생성
+  - [x] 회원가입 API (`POST /register`)
+  - [x] 로그인 API (`POST /login`)
+  - [x] 회원정보 확인 API (`GET /user`)
+  - [x] 프로필 수정 API (`PATCH /profile`)
 
 ### 4. 레이아웃과 네비게이션
-- [[x]] 공통 레이아웃 (`MainLayout`) 구현
-- [[x]] **ProtectedRoute 설정**
+- [x] 공통 레이아웃 (`MainLayout`) 구현
+- [x] **ProtectedRoute 설정**
   - 인증되지 않은 사용자는 로그인 페이지로 리디렉션
 
 ### 5. MBTI 문항 가져오기
-- [[x]] `src/data/questions.js` 생성
+- [x] `src/data/questions.js` 생성
   - 20개의 MBTI 문항 작성
 
 ### 6. json-server 셋업 및 API 연결
