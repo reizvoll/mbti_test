@@ -123,27 +123,27 @@ src/
   - 20개의 MBTI 문항 작성
 
 ### 6. json-server 셋업 및 API 연결
-- [[x]] `db.json` 생성
+- [x] `db.json` 생성
   - 초기 데이터 작성
-- [[x]] `json-server` 설치 및 설정 (`scripts`에 추가)
-- [[x]] `src/api/testResults.js` 생성
-  - [[x]] 테스트 결과 CRUD API 작성
+- [x] `json-server` 설치 및 설정 (`scripts`에 추가)
+- [x] `src/api/testResults.js` 생성
+  - [x] 테스트 결과 CRUD API 작성
     - `GET /testResults`
     - `POST /testResults`
     - `DELETE /testResults/:id`
     - `PATCH /testResults/:id`
 
 ### 7. MBTI 테스트 페이지
-- [[x]] `src/utils/mbtiCalculator.js` 생성
+- [x] `src/utils/mbtiCalculator.js` 생성
   - MBTI 결과 계산 로직 작성
   - MBTI 유형 설명 포함 (`mbtiDescriptions`)
-- [[x]] `TestForm` 컴포넌트 생성
+- [x] `TestForm` 컴포넌트 생성
   - 질문 랜더링 및 응답 처리
-- [[x]] `TestPage` 컴포넌트 생성
+- [x] `TestPage` 컴포넌트 생성
   - `TestForm` 사용 및 결과 처리
 
 ### 8. 테스트 결과 리스트 구성
-- [[x]] `TestResultList.jsx` 생성
+- [x] `TestResultList.jsx` 생성
   - 결과 리스트 표시 및 필터링
 - [ ] `TestResultItem.jsx` 생성
   - 결과 공개 여부 변경 및 삭제 기능 구현
@@ -159,9 +159,9 @@ src/
 - [ ] 테스트 결과 상태 관리를 Tanstack Query(React Query)로 구현
 
 ### 3. Axios Instance 사용
-- [[x]] Axios 인스턴스 생성
-  - [[x]] 공통 설정 및 인터셉터 적용
-  - [[x]] 재사용 가능한 API 호출 로직 작성
+- [x] Axios 인스턴스 생성
+  - [x] 공통 설정 및 인터셉터 적용
+  - [x] 재사용 가능한 API 호출 로직 작성
 
 
 ---
